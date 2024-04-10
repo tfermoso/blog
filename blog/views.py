@@ -3,11 +3,14 @@ from django.utils import timezone
 from .models import Post
 from .form import PostForm
 
-def index(request):
+def home(request):
     return render(request,'blog/index.html',{})
 
 def contacto(request):
     return render(request,'blog/contact.html',{})
+
+def project(request):
+    return render(request,'blog/projects.html',{})
 
 def post_list(request):
     posts = Post.objects.all().order_by('published_date')
