@@ -1,10 +1,16 @@
 {% extends 'blog/base1.html' %}
 {% block content %}
-{% for post in posts %}
 <div class="container">
+<h2>New Post</h2>
+{% if user.is_authenticated %}
+<a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+{% endif %}
+{% for post in posts %}
+<div>
     <p> publicado: {{ post.published_date }}</p>
     <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
     <p>{{ post.text|linebreaksbr }}</p>
 </div>
 {% endfor %}
+</div>
 {% endblock %}
