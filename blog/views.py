@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.utils import timezone
-from .models import Post
+from .models import Post,Project
 from .form import PostForm
 
 def home(request):
@@ -10,7 +10,8 @@ def contacto(request):
     return render(request,'blog/contact.html',{})
 
 def project(request):
-    return render(request,'blog/projects.html',{})
+    projects=Project.objects.all()
+    return render(request,'blog/projects.html',{'projects':projects})
 
 def post_list(request):
     posts = Post.objects.all().order_by('published_date')
